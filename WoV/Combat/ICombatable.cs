@@ -1,9 +1,9 @@
-namespace WoV;
+namespace WoV.Combat;
 
 public interface ICombatable
 {
-    public int HP { get; }
-    public int Mana { get; }
+    public float HP { get; }
+    public float Mana { get; }
     public float Damage { get; }
     public float Defence { get; }
 
