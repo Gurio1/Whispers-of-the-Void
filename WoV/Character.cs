@@ -1,36 +1,33 @@
 namespace WoV;
 
-public class Character(ILogger logger) : ICombatable, ICultivable
+public class Character(string userId) : ICombatable, ICultivable
 {
-    public int HP { get; private set; }
-    public int Mana { get; private set; }
-    public float Damage { get; private set; }
-    public float Defence { get; private set; }
+    public string UserId { get; private set; } = userId;
+    public Guid Id { get; private set; } = Guid.NewGuid();
+
+    public float HP { get; private set; } = 100;
+    public float Mana { get; private set; } = 100;
+    public float Damage { get; private set; } = 10;
+    public float Defence { get; private set; } = 40;
 
     public float TotalCultivationExp { get; private set;}
-    public float CultivationSpeed { get; private set; } = 100.0f;
+    public float CurrentCultivationExp { get; private set; }
+    public float CultivationSpeedPerSecond { get; private set; } = 100.0f;
+    
     public bool IsCultivating { get; private set; }
-
 
     public void Attack(ICombatable opponent)
     {
         throw new NotImplementedException();
     }
 
-    public async Task CultivateAsync()
+    public float Cultivate()
     {
-        IsCultivating = true;
-        while (IsCultivating)
-        {
-            TotalCultivationExp += CultivationSpeed;
-            logger.LogInformation("Total cultivation exp : {TotalCultivationExp}",TotalCultivationExp);
-            await Task.Delay(1000);
-        }
+        if (!IsCultivating) return CurrentCultivationExp;
+        
+        TotalCultivationExp += CultivationSpeedPerSecond;
+        CurrentCultivationExp += CultivationSpeedPerSecond;
 
-    }
-
-    public void StopCultivating()
-    {
-        IsCultivating = false;
+        return CurrentCultivationExp;
     }
 }
