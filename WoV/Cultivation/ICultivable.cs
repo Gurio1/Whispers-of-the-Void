@@ -2,8 +2,8 @@ namespace WoV.Cultivation;
 
 public interface ICultivable
 {
-    public float TotalCultivationExp { get; }
-    public float CurrentCultivationExp { get; }
-    public float CultivationSpeedPerSecond { get; }
-    public float Cultivate();
+    public double TotalCultivationExp { get; }
+    public double CurrentCultivationExp { get; }
+    public double CultivationSpeedPerSecond { get; }
+    public double Cultivate();
 }

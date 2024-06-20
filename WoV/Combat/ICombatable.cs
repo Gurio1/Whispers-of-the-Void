@@ -2,10 +2,10 @@ namespace WoV.Combat;
 
 public interface ICombatable
 {
-    public float HP { get; }
-    public float Mana { get; }
-    public float Damage { get; }
-    public float Defence { get; }
+    public double HP { get; }
+    public double Mana { get; }
+    public double Damage { get; }
+    public double Defence { get; }
 
     public void Attack(ICombatable opponent);
 }

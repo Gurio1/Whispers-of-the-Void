@@ -1,3 +1,4 @@
+using System.Security.Claims;
 using FastEndpoints;
 using FastEndpoints.Security;
 using Microsoft.AspNetCore.Identity;
@@ -43,7 +44,8 @@ public class Login : Endpoint<UserLoginRequest>
             {
                 o.SigningKey = jwtSecret;
                 o.ExpireAt = DateTime.UtcNow.AddDays(1);
-                o.User["ID"] = user.Id;
+                o.User.Claims.Add( new Claim(ClaimsIdentity.DefaultNameClaimType, user.Id));
+                o.User["id"] = user.Id;
             });
 
         await SendOkAsync(jwtToken, ct);

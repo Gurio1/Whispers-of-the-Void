@@ -7,9 +7,43 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="FastEndpoints" Version="5.25.0" />
+        <PackageReference Include="FastEndpoints.Swagger" Version="5.25.0" />
+        <PackageReference Include="MediatR" Version="12.2.0" />
+        <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.4" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.4"/>
         <PackageReference Include="Microsoft.AspNetCore.SignalR.Client" Version="8.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.4">
+          <PrivateAssets>all</PrivateAssets>
+          <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+        </PackageReference>
+        <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+        <PackageReference Include="Serilog.AspNetCore" Version="8.0.1" />
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0"/>
+        <PackageReference Include="FastEndpoints.Security" Version="5.24.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Compile Update="Identity\Endpoints\CreateUserRequest.cs">
+        <DependentUpon>CreateUser.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Identity\Endpoints\UserLoginRequest.cs">
+        <DependentUpon>Login.cs</DependentUpon>
+      </Compile>
+      <Compile Update="Identity\Endpoints\CreateUserRequestValidator.cs">
+        <DependentUpon>CreateUser.cs</DependentUpon>
+      </Compile>
+      <Compile Update="CultivationStages\Endpoints\CreateCultivationStageRequest.cs">
+        <DependentUpon>CreateCultivationStage.cs</DependentUpon>
+      </Compile>
+      <Compile Update="CultivationSubStages\Endpoints\CreateCultivationSubStageRequest.cs">
+        <DependentUpon>CreateCultivationSubStage.cs</DependentUpon>
+      </Compile>
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Database\Migrations\" />
     </ItemGroup>
 
 </Project>
